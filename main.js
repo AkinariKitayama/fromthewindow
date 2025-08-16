@@ -432,6 +432,7 @@ function sizeMainCanvas() {
     const isPhone = vw <= PHONE_BP;
 
     let w = baseW;
+    let h = baseH;
 
     if (isPhone) {
         // Candidates for phone width
@@ -439,9 +440,8 @@ function sizeMainCanvas() {
         const byViewport = Math.floor(vw * PHONE_VIEWPORT_RATIO);        
         const capped     = Math.min(byScale, byViewport, PHONE_MAX_W);    
         w = 200; //Math.max(baseW, capped);
-    }                           
-
-    const h = 400; //Math.round(w / baseAspect);
+        h = 400; //Math.round(w / baseAspect);
+    }
 
     // Update renderer and camera
     renderer.setSize(w, h); 
