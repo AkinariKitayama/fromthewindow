@@ -9,8 +9,8 @@ let renderer, camera;
 
 const PHONE_BP = 768;           
 let PHONE_SCALE = 1.25;            
-let PHONE_MAX_W = 400;          
-let PHONE_VIEWPORT_RATIO = 0.65;
+let PHONE_MAX_W = 200;          
+let PHONE_VIEWPORT_RATIO = 0.25;
 
 //subDisplay
 const subdisX = 256;
