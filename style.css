@@ -145,4 +145,15 @@ font-style: normal;  */
         touch-action: none;
     }
 
-
+    @media (max-width: 768px) {
+        .wrapper{grid-template-columns: clamp(8px, 4vw, 20px) max-content
+            clamp(96px, 18vw, 140px);
+        }
+        #WebGL-output{
+            justify-self: start !important; /* grid itemは justify-self。typoで効いてなかった */
+        }
+        body{
+          justify-content: flex-start;                 /* 中央寄せ → 左寄せ */
+          padding-left: clamp(6px, 3vw, 16px);         /* 少しだけ左余白を足して微調整 */
+        }
+    }
