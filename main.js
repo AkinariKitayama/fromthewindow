@@ -431,23 +431,28 @@ function sizeMainCanvas() {
     const baseAspect = baseW / baseH;
     const isPhone = vw <= PHONE_BP;
 
+    const container = document.getElementById("WebGL-output");
+
     let w = baseW;
     let h = baseH;
 
     if (isPhone) {
-        // Candidates for phone width
+        container.style.justifySelf = "center";
         const byScale    = Math.floor(baseW * PHONE_SCALE);               
         const byViewport = Math.floor(vw * PHONE_VIEWPORT_RATIO);        
         const capped     = Math.min(byScale, byViewport, PHONE_MAX_W);    
-        w = 200; //Math.max(baseW, capped);
-        h = 400; //Math.round(w / baseAspect);
-    }
+        w = 200;
+        h = 400;//Math.round(w / baseAspect);
+    } else {
+        container.style.justifySelf = "end";
+    }                         
+
 
     // Update renderer and camera
     renderer.setSize(w, h); 
     camera.aspect = w / h;
     camera.updateProjectionMatrix();
 
-    // (optional) debug
+   
     // console.log({isPhone, vw, w, h});
 }
