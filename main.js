@@ -438,7 +438,8 @@ function sizeMainCanvas() {
         const byScale    = Math.floor(baseW * PHONE_SCALE);               
         const byViewport = Math.floor(vw * PHONE_VIEWPORT_RATIO);        
         const capped     = Math.min(byScale, byViewport, PHONE_MAX_W);    
-        w = Math.max(baseW, capped);                                    
+        w = Math.max(baseW, capped);
+    }                           
 
     const h = Math.round(w / baseAspect);
 
@@ -448,6 +449,5 @@ function sizeMainCanvas() {
     camera.updateProjectionMatrix();
 
     // (optional) debug
-    // console.log({isPhone, vw, w, h});
-}
+    console.log({isPhone, vw, w, h});
 }
