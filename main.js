@@ -88,7 +88,7 @@ function init() {
     renderer.setSize(disX, disY);
     renderer.domElement.id = "mainDisplay";
     document.getElementById("WebGL-output").appendChild(renderer.domElement);
-    renderer.domElement.style.border = '0.6px solid white';
+    renderer.domElement.style.border = '1px solid white';
 
     camera = new THREE.PerspectiveCamera(20, window.innerWidth/window.innerHeight, 0.1, 1000);
     sizeMainCanvas();
