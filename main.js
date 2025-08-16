@@ -132,7 +132,7 @@ function init() {
                 const ratio = Math.min(i / safeLine, 1);
                 const amplitude = Math.pow(ratio, 3);
                 const base = 0.4 * windSpeed * amplitude;
-                const yuragi = 0.05 * windSpeed * amplitude
+                const yuragi = 0.05 * (windSpeed * 0.6) * amplitude
                              * Math.sin(t * speedFactor * (windSpeed * 0.4) + phaseOffset);
                 const noiseWobble = 0.06 * windSpeed * amplitude * n11; // ★ amplitude を掛ける
                 const swing = Math.max(0, base + yuragi + noiseWobble);
