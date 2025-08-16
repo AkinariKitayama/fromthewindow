@@ -14,7 +14,7 @@ let rY = 0;
 let rZ = 0;
 let clickedP = [0,0];
 
-let windDirection = 0.0; //角度(0°=北風)
+let windDirection = 0.0;
 let windSpeed = 1.0;
 let weather;
 let rainamt = 0;
