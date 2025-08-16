@@ -6,6 +6,7 @@ const grasses = [];
 const disX = 350;
 const disY = 500;
 let renderer, camera;
+let touchBound = false;
 
 const PHONE_BP = 768;           
 let PHONE_SCALE = 1.25;            
@@ -153,6 +154,9 @@ init();
 // let canvas = document.getElementById("clock");;
 // let ctx = canvas.getContext("2d");
 
+function isPhoneEnv() {
+    return window.innerWidth <= PHONE_BP || window.matchMedia("(pointer: coarse)").matches;
+}
 
 window.addEventListener("load", function() {
  document.getElementById("mainDisplay").addEventListener("mousedown", (event) => {
@@ -186,6 +190,52 @@ window.addEventListener("mouseup", () => {
 //  setClock();
 //   setInterval(setClock, 1000);
 
+function bindTouchListeners() {
+    if(tochBound) return;
+    const canvas = document.getElementById("mainDisplay");
+    const onTouchDefault();
+    isDragging = true;
+    const t = e.touches[0];
+    const rect = cavas.getBoundingClientRect();
+    const x = t.clientX - rect.left;
+    const y = t.clientY - rect.top;
+    clickedP[0] = x;
+    clickedP[1] = y;
+};
+     const onTouchMove = (e) => {
+         if(!isDragging) return;
+         e.preventDefault();
+         const t = e.touches[0];
+         const rect = cavas.getBoundingClientRect();
+         const x = t.clientX - rect.left;
+         const y = t.clientY - rect.top;
+         logPosition({offsetX: x, offsetY: y});
+     };
+    const onTouchEnd = () => {isDragging = false; };
+    const onTouchCancel = () => {isDragging = false; };
+
+    canvas._onTouchStart = onTouchStart;
+    canvas._onTouchMove = onTouchMove;
+    canvas._onTouchEnd = onTouchEnd;
+    canvas._onTouchCancel = onTouchCancel;
+
+    canvas.addEventListener("touchstart", onTouchStart, {passive: false});
+    canvas.addEventListener("touchmove", onTouchMove, {passive: false});
+    canvas.addEventListener("touchend", onTouchEnd, {passive: false});
+    canvas.addEventListener("touchcancel", onTouchCancel, {passive: false});
+
+    touchBound = true;
+}
+function tryBindTouchOnMobile() {
+    if(isPhoneEnv() && !touchBound) {
+        bindTouchListener();
+    }  
+}
+
+tryBindTouchOnMobile();
+window.addEventListener("resize", tryBindTouchOnMobile);
+window.addEventListener("orientationchange", tryBindTouchOnMobile);
+                        
 });
 
  function logPosition(event) {
