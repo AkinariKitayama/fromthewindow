@@ -3,8 +3,8 @@ const WORKER_BASE = 'https://fromthewindow.akinarikitayama.workers.dev';
 
 const grasses = [];
 //mainDisplay
-const disX = 350;
-const disY = 500;
+const disX = 300;
+const disY = 400;
 let renderer, camera;
 let touchBound = false;
 
