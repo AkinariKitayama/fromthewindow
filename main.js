@@ -449,5 +449,5 @@ function sizeMainCanvas() {
     camera.updateProjectionMatrix();
 
     // (optional) debug
-    console.log({isPhone, vw, w, h});
+    // console.log({isPhone, vw, w, h});
 }
