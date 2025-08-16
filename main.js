@@ -3,7 +3,7 @@ const WORKER_BASE = 'https://fromthewindow.akinarikitayama.workers.dev';
 
 const grasses = [];
 //mainDisplay
-const disX = 375;
+const disX = 350;
 const disY = 500;
 //subDisplay
 const subdisX = 256;
