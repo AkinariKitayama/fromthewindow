@@ -85,12 +85,12 @@
         width: 100%;
         color: white;
         text-align: left;
-/*         font-family: "yu-gothic-pr6n", sans-serif;
+        font-family: "yu-gothic-pr6n", sans-serif;
         font-size: 10px;
-        font-style: normal; */
-          font-family: "source-han-sans-vf",sans-serif;
+        font-style: normal; 
+/*           font-family: "source-han-sans-vf",sans-serif;
   font-variation-settings: 'wght' 382;
-  font-size: 10px;
+  font-size: 10px; */
         margin: 0;
         cursor: pointer;
                 line-height: 1.3;
