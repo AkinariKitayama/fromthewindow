@@ -1,0 +1,63 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+
+    <script>
+  (function(d) {
+    var config = {
+      kitId: 'nkz7oog',
+      scriptTimeout: 3000,
+      async: true
+    },
+    h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+  })(document);
+    </script>
+
+
+    <link rel="stylesheet" href="style.css" type="text/css">
+  </head>
+  <body>
+  <div class="wrapper">
+    <!-- <div id="clockCell">
+      <canvas id="clock" width="100" height="100"></canvas>
+    </div> -->
+    <div id="WebGL-output"></div>
+    <div id="selectBox">
+       <button class="locationBtn" location="Tokyo,JP">東京</button>
+       <button class="locationBtn" location="Kyoto,JP">京都</button>    
+       <button class="locationBtn" location="Sapporo,JP">札幌</button>
+       <button class="locationBtn" location="Okinawa,JP">沖縄</button>
+       <button class="locationBtn" location="brasilia">ブラジリア</button>
+       <button class="locationBtn" location="Oregon,US">オレゴン州</button>
+       <button class="locationBtn" location="Canberra,AU">キャンベラ</button>
+       <button class="locationBtn" location="Bern,CH">ベルン</button>
+       <button class="locationBtn" location="Beijing,CN">北京</button>
+       <button class="locationBtn" location="Singapore,SG">シンガポール</button>
+       <button class="locationBtn" location="Pyongyang,KP">平壌</button>
+       <button class="locationBtn" location="Paris,FR">パリ</button>
+       <button class="locationBtn" location="Washington D.C.,US">ワシントン D.C</button>
+       <button class="locationBtn" location="Mexico City,MX">メキシコシティ</button>
+       <button class="locationBtn" location="Cairo,EG">カイロ</button>
+       <button class="locationBtn" location="Jakarta,ID">ジャカルタ</button>
+       <button class="locationBtn" location="Sucre,BO">スクレ</button>
+       <button class="locationBtn" location="Amazonas,BR">アマゾン川</button>
+        
+    </div>
+    <div id="log">
+        <p id="cityName" class="logText">city: default</p>
+        <p id="windDirection" class="logText">windDir: 0°</p>
+        <p id="windSpeed" class="logText">windSpeed: 0</p>
+        <p id="rainAmt" class="logText">rainAmt: 0</p>
+    </div>
+    </div>
+
+
+    <script type="module" src="main.js"></script>
+    <!-- <script type="module">
+    import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
+    </script> -->
+  </body>
+</html>
