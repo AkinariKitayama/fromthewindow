@@ -84,7 +84,7 @@ for (let i = 0; i < 290; i++) {
 }
 
 function init() {
-    const renderer = new THREE.WebGLRenderer();
+    renderer = new THREE.WebGLRenderer();
     renderer.setSize(disX, disY);
     renderer.domElement.id = "mainDisplay";
     document.getElementById("WebGL-output").appendChild(renderer.domElement);
