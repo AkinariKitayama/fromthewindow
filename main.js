@@ -90,7 +90,7 @@ function init() {
     document.getElementById("WebGL-output").appendChild(renderer.domElement);
     renderer.domElement.style.border = '0.6px solid white';
 
-    const camera = new THREE.PerspectiveCamera(20, window.innerWidth/window.innerHeight, 0.1, 1000);
+    camera = new THREE.PerspectiveCamera(20, window.innerWidth/window.innerHeight, 0.1, 1000);
     sizeMainCanvas();
     window.addEventListener("resize", sizeMainCanvas);
     window.addEventListener("orientationchange", sizeMainCanvas);
