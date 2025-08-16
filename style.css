@@ -140,3 +140,16 @@ font-style: normal;  */
     #mainDisplay {
         touch-action: none;
     }
+
+    #mainDisplay {
+        touch-action: none;
+    }
+
+    @media (max-width: 768px) {
+        .wrapper{grid-template-columns: clamp(8px, 4vw, 20px) max-content
+            clamp(96px, 18vw, 140px);
+        }
+        #WebGL-output{
+            justify-content: start !important;
+        }
+    }
