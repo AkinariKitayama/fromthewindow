@@ -17,7 +17,7 @@ let PHONE_VIEWPORT_RATIO = 0.2;
 const subdisX = 256;
 const subdisY = 256;
 let isDragging = false;
-let rX = 0;
+let rX = 0.05;
 let rY = 0;
 let rZ = 0;
 let clickedP = [0,0];
@@ -62,7 +62,7 @@ let prevTime = 0;
 function newGrasses(scene, material) {
     grasses.length = 0;
     grassGroup.clear();
-for (let i = 0; i < 290; i++) {
+for (let i = 0; i < 320; i++) {
      const x = (Math.random() - 0.5) * 10;
      const z = (Math.random() - 0.3) * 50;
      const points = [];
@@ -97,7 +97,7 @@ function init() {
     window.addEventListener("resize", sizeMainCanvas);
     window.addEventListener("orientationchange", sizeMainCanvas);
     // camera = THREE.PerspectiveCamera(20, disX/disY, 0.1, 1000);
-    camera.position.set(0,1.17,10);
+    camera.position.set(0,1.3,20);
     camera.rotation.set(rX, rY, rZ);
 
     newGrasses(scene, material);
