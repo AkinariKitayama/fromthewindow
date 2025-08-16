@@ -62,9 +62,9 @@ let prevTime = 0;
 function newGrasses(scene, material) {
     grasses.length = 0;
     grassGroup.clear();
-for (let i = 0; i < 320; i++) {
+for (let i = 0; i < 590; i++) {
      const x = (Math.random() - 0.5) * 10;
-     const z = (Math.random() - 0.3) * 50;
+     const z = (Math.random() - 0.1) * 90;
      const points = [];
      const total = 20;
      const height = 1.0 + (Math.random()) * 0.3; 
@@ -92,12 +92,12 @@ function init() {
     document.getElementById("WebGL-output").appendChild(renderer.domElement);
     // renderer.domElement.style.border = '1px solid white';
 
-    camera = new THREE.PerspectiveCamera(20, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera = new THREE.PerspectiveCamera(17, window.innerWidth / window.innerHeight, 0.1, 1000);
     sizeMainCanvas();
     window.addEventListener("resize", sizeMainCanvas);
     window.addEventListener("orientationchange", sizeMainCanvas);
     // camera = THREE.PerspectiveCamera(20, disX/disY, 0.1, 1000);
-    camera.position.set(0,1.0,20);
+    camera.position.set(0,1,40);
     camera.rotation.set(rX, rY, rZ);
 
     newGrasses(scene, material);
