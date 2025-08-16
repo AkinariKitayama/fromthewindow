@@ -56,7 +56,7 @@
         -ms-overflow-style: none;
         background-color: black;
         padding: 10px;
-        border: 0.7px solid white;
+        border: 1px solid white;
     }
     #selectBox::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera */
@@ -99,21 +99,21 @@ font-style: normal; */
 
 font-family: "yu-gothic-pr6n", sans-serif;
 font-size: 12px;
-font-style: normal; 
+font-style: normal;
 
 /* font-family: "kozuka-gothic-pro", sans-serif;
 font-size: 11.5px;
-font-style: normal; */
+font-style: normal;  */
 
 
   /* font-family: "momochidori-variable",sans-serif;
   font-size: 12px;
   font-variation-settings: 'wdth' 93, 'wght' 351, 'ital' 0; */
 
-/*   font-family: "zen-kaku-gothic-antique", sans-serif;
+  /* font-family: "zen-kaku-gothic-antique", sans-serif;
   font-size: 11.5px;
 font-weight: 300;
-font-style: normal; */
+font-style: normal;  */
 
 
         align-items: flex-start;
