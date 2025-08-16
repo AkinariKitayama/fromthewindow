@@ -5,6 +5,13 @@ const grasses = [];
 //mainDisplay
 const disX = 350;
 const disY = 500;
+let renderer, camera;
+
+const PHONE_BP = 768;           
+let PHONE_SCALE = 1.5;            
+let PHONE_MAX_W = 620;          
+let PHONE_VIEWPORT_RATIO = 0.95; 
+
 //subDisplay
 const subdisX = 256;
 const subdisY = 256;
@@ -84,6 +91,9 @@ function init() {
     renderer.domElement.style.border = '0.6px solid white';
 
     const camera = new THREE.PerspectiveCamera(20, window.innerWidth/window.innerHeight, 0.1, 1000);
+    sizeMainCanvas();
+    window.addEventListener("resize", sizeMainCanvas);
+    window.addEventListener("orientationchange", sizeMainCanvas);
     camera.position.set(0,1.17,10);
     camera.rotation.set(rX, rY, rZ);
 
@@ -94,6 +104,8 @@ function init() {
 
     function animate(time = 0) {
         requestAnimationFrame(animate);
+
+        sizeMainCanvas();
 
         const t = time * 0.001;
         const dt = prevTime === 0 ? 0.016 : (time - prevTime) / 1000;
@@ -413,7 +425,29 @@ function setClock() {
 
 }
 
-function getTime() {
+function sizeMainCanvas() {
+    const vw = window.innerWidth;
+    const baseW = disX, baseH = disY;
+    const baseAspect = baseW / baseH;
+    const isPhone = vw <= PHONE_BP;
 
+    let w = baseW;
 
+    if (isPhone) {
+        // Candidates for phone width
+        const byScale    = Math.floor(baseW * PHONE_SCALE);               
+        const byViewport = Math.floor(vw * PHONE_VIEWPORT_RATIO);        
+        const capped     = Math.min(byScale, byViewport, PHONE_MAX_W);    
+        w = Math.max(baseW, capped);                                    
+
+    const h = Math.round(w / baseAspect);
+
+    // Update renderer and camera
+    renderer.setSize(w, h); 
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+
+    // (optional) debug
+    // console.log({isPhone, vw, w, h});
+}
 }
