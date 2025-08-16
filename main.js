@@ -11,7 +11,7 @@ let touchBound = false;
 const PHONE_BP = 768;           
 let PHONE_SCALE = 1.25;            
 let PHONE_MAX_W = 200;          
-let PHONE_VIEWPORT_RATIO = 0.25;
+let PHONE_VIEWPORT_RATIO = 0.2; 
 
 //subDisplay
 const subdisX = 256;
@@ -22,7 +22,7 @@ let rY = 0;
 let rZ = 0;
 let clickedP = [0,0];
 
-let windDirection = 0.0;
+let windDirection = 0.0; //角度(0°=北風)
 let windSpeed = 1.0;
 let weather;
 let rainamt = 0;
@@ -86,15 +86,17 @@ for (let i = 0; i < 290; i++) {
 
 function init() {
     renderer = new THREE.WebGLRenderer();
+    // renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(disX, disY);
     renderer.domElement.id = "mainDisplay";
     document.getElementById("WebGL-output").appendChild(renderer.domElement);
-    renderer.domElement.style.border = '1px solid white';
+    // renderer.domElement.style.border = '1px solid white';
 
-    camera = new THREE.PerspectiveCamera(20, window.innerWidth/window.innerHeight, 0.1, 1000);
+    camera = new THREE.PerspectiveCamera(20, window.innerWidth / window.innerHeight, 0.1, 1000);
     sizeMainCanvas();
     window.addEventListener("resize", sizeMainCanvas);
     window.addEventListener("orientationchange", sizeMainCanvas);
+    // camera = THREE.PerspectiveCamera(20, disX/disY, 0.1, 1000);
     camera.position.set(0,1.17,10);
     camera.rotation.set(rX, rY, rZ);
 
@@ -132,11 +134,11 @@ function init() {
                 const index = i * 3;
                 const ratio = Math.min(i / safeLine, 1);
                 const amplitude = Math.pow(ratio, 3);
-                const base = 0.4 * (windSpeed*0.5) * amplitude;
-                const yuragi = 0.05 * (windSpeed * 0.6) * amplitude
-                             * Math.sin(t * speedFactor * windSpeed + phaseOffset);
+                const base = 0.4 * windSpeed * amplitude;
+                const yuragi = 0.05 * windSpeed * amplitude
+                             * Math.sin(t * speedFactor * (windSpeed * 0.4) + phaseOffset);
                 const noiseWobble = 0.06 * windSpeed * amplitude * n11; // ★ amplitude を掛ける
-                const swing = Math.max(0, base + (yuragi*1.5) + noiseWobble);
+                const swing = Math.max(0, base + yuragi + noiseWobble);
                 position[index] = baseX + windVecX * swing;
                 position[index + 2] =baseZ + windVecZ * swing;
 
@@ -155,7 +157,7 @@ init();
 // let ctx = canvas.getContext("2d");
 
 function isPhoneEnv() {
-    return window.innerWidth <= PHONE_BP || window.matchMedia("(pointer: coarse)").matches;
+  return window.innerWidth <= PHONE_BP || window.matchMedia('(pointer: coarse)').matches;
 }
 
 window.addEventListener("load", function() {
@@ -187,55 +189,62 @@ window.addEventListener("mouseup", () => {
     });
  });
 
-//  setClock();
-//   setInterval(setClock, 1000);
 
 function bindTouchListeners() {
-    if(tochBound) return;
-    const canvas = document.getElementById("mainDisplay");
-    const onTouchDefault();
+  if (touchBound) return;
+  const canvas = document.getElementById("mainDisplay");
+  const onTouchStart = (e) => {
+    e.preventDefault();
     isDragging = true;
     const t = e.touches[0];
-    const rect = cavas.getBoundingClientRect();
+    const rect = canvas.getBoundingClientRect();
     const x = t.clientX - rect.left;
     const y = t.clientY - rect.top;
     clickedP[0] = x;
     clickedP[1] = y;
-};
-     const onTouchMove = (e) => {
-         if(!isDragging) return;
-         e.preventDefault();
-         const t = e.touches[0];
-         const rect = cavas.getBoundingClientRect();
-         const x = t.clientX - rect.left;
-         const y = t.clientY - rect.top;
-         logPosition({offsetX: x, offsetY: y});
-     };
-    const onTouchEnd = () => {isDragging = false; };
-    const onTouchCancel = () => {isDragging = false; };
+  };
+  const onTouchMove = (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const t = e.touches[0];
+    const rect = canvas.getBoundingClientRect();
+    const x = t.clientX - rect.left;
+    const y = t.clientY - rect.top;
+    logPosition({ offsetX: x, offsetY: y });
+  };
+  const onTouchEnd = () => { isDragging = false; };
+  const onTouchCancel = () => { isDragging = false; };
 
-    canvas._onTouchStart = onTouchStart;
-    canvas._onTouchMove = onTouchMove;
-    canvas._onTouchEnd = onTouchEnd;
-    canvas._onTouchCancel = onTouchCancel;
 
-    canvas.addEventListener("touchstart", onTouchStart, {passive: false});
-    canvas.addEventListener("touchmove", onTouchMove, {passive: false});
-    canvas.addEventListener("touchend", onTouchEnd, {passive: false});
-    canvas.addEventListener("touchcancel", onTouchCancel, {passive: false});
+  canvas._onTouchStart = onTouchStart;
+  canvas._onTouchMove = onTouchMove;
+  canvas._onTouchEnd = onTouchEnd;
+  canvas._onTouchCancel = onTouchCancel;
 
-    touchBound = true;
+  canvas.addEventListener("touchstart", onTouchStart, { passive: false });
+  canvas.addEventListener("touchmove", onTouchMove, { passive: false });
+  canvas.addEventListener("touchend", onTouchEnd, { passive: false });
+  canvas.addEventListener("touchcancel", onTouchCancel, { passive: false });
+
+  touchBound = true;
 }
+
 function tryBindTouchOnMobile() {
-    if(isPhoneEnv() && !touchBound) {
-        bindTouchListener();
-    }  
+  if (isPhoneEnv() && !touchBound) {
+    bindTouchListeners();
+  }
 }
 
+// 初回判定
 tryBindTouchOnMobile();
+// 端末の回転や幅変更にも追従（必要時のみバインド）
 window.addEventListener("resize", tryBindTouchOnMobile);
 window.addEventListener("orientationchange", tryBindTouchOnMobile);
-                        
+
+
+//  setClock();
+//   setInterval(setClock, 1000);
+
 });
 
  function logPosition(event) {
@@ -474,6 +483,7 @@ function setClock() {
     ctx.stroke();
 
 }
+
 
 function sizeMainCanvas() {
     const vw = window.innerWidth;
