@@ -438,10 +438,10 @@ function sizeMainCanvas() {
         const byScale    = Math.floor(baseW * PHONE_SCALE);               
         const byViewport = Math.floor(vw * PHONE_VIEWPORT_RATIO);        
         const capped     = Math.min(byScale, byViewport, PHONE_MAX_W);    
-        w = Math.max(baseW, capped);
+        w = 200; //Math.max(baseW, capped);
     }                           
 
-    const h = Math.round(w / baseAspect);
+    const h = 400; //Math.round(w / baseAspect);
 
     // Update renderer and camera
     renderer.setSize(w, h); 
