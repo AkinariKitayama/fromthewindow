@@ -42,7 +42,7 @@ const rainTopMin = 8, rainTopMax = 14;
 const G = 9.8;
 
 //clock
-const clock = document.getElementById("clock");
+// const clock = document.getElementById("clock");
 
 const rainGroup = new THREE.Group();
 let rainGeo, rainLine, rainPositions;
@@ -138,8 +138,8 @@ function init() {
 }
 init();
 
-let canvas = document.getElementById("clock");;
-let ctx = canvas.getContext("2d");
+// let canvas = document.getElementById("clock");;
+// let ctx = canvas.getContext("2d");
 
 
 window.addEventListener("load", function() {
@@ -171,8 +171,8 @@ window.addEventListener("mouseup", () => {
     });
  });
 
- setClock();
-  setInterval(setClock, 1000);
+//  setClock();
+//   setInterval(setClock, 1000);
 
 });
 
