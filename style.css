@@ -150,10 +150,10 @@ font-style: normal;  */
             clamp(96px, 18vw, 140px);
         }
         #WebGL-output{
-            justify-self: start !important; /* grid itemは justify-self。typoで効いてなかった */
+            justify-self: start !important; 
         }
         body{
-          justify-content: flex-start;                 /* 中央寄せ → 左寄せ */
-          padding-left: clamp(6px, 3vw, 16px);         /* 少しだけ左余白を足して微調整 */
+          justify-content: flex-start;                
+          padding-left: clamp(6px, 3vw, 16px);        
         }
     }
