@@ -97,7 +97,7 @@ function init() {
     window.addEventListener("resize", sizeMainCanvas);
     window.addEventListener("orientationchange", sizeMainCanvas);
     // camera = THREE.PerspectiveCamera(20, disX/disY, 0.1, 1000);
-    camera.position.set(0,1.3,20);
+    camera.position.set(0,1.0,20);
     camera.rotation.set(rX, rY, rZ);
 
     newGrasses(scene, material);
