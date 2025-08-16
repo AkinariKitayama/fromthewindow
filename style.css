@@ -85,9 +85,12 @@
         width: 100%;
         color: white;
         text-align: left;
-        font-family: "yu-gothic-pr6n", sans-serif;
+/*         font-family: "yu-gothic-pr6n", sans-serif;
         font-size: 10px;
-        font-style: normal;
+        font-style: normal; */
+          font-family: "source-han-sans-vf",sans-serif;
+  font-variation-settings: 'wght' 382;
+  font-size: 10px;
         margin: 0;
         cursor: pointer;
                 line-height: 1.3;
@@ -101,9 +104,9 @@
 font-size: 12px;
 font-style: normal; */
 
-font-family: "yu-gothic-pr6n", sans-serif;
+/* font-family: "yu-gothic-pr6n", sans-serif;
 font-size: 12px;
-font-style: normal;
+font-style: normal; */
 
 /* font-family: "kozuka-gothic-pro", sans-serif;
 font-size: 11.5px;
@@ -118,6 +121,10 @@ font-style: normal;  */
   font-size: 11.5px;
 font-weight: 300;
 font-style: normal;  */
+
+          font-family: "source-han-sans-vf",sans-serif;
+  font-variation-settings: 'wght' 382;
+  font-size: 12px;
 
 
         align-items: flex-start;
